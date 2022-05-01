@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NotificacionActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#0099CC"
+        android:orientation="vertical"
+        android:weightSum="13"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/notText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="NOTIFICACIONES"
+            android:textSize="34sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="367dp"
+            android:layout_weight="11"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/notificacionesRv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <!--
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:background="#fff">
+
+            <ImageButton
+                android:id="@+id/homeBtn7"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_baseline_home_24"
+                android:background="@drawable/edt_style"/>
+
+            <ImageButton
+                android:id="@+id/buscarBtn7"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_baseline_search_24"
+                android:background="@drawable/edt_style"/>
+
+            <ImageButton
+                android:id="@+id/perfilBtn7"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_baseline_person_24"
+                android:background="@drawable/edt_style"/>
+
+            <ImageButton
+                android:id="@+id/publicarIrBtn7"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_baseline_publish_24"
+                android:background="@drawable/edt_style"/>
+
+            <ImageButton
+                android:id="@+id/notificacionBtn7"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:contentDescription="TODO"
+                app:srcCompat="@drawable/ic_baseline_notifications_24"
+                tools:ignore="SpeakableTextPresentCheck"
+                android:background="@drawable/edt_style"/>
+
+            <ImageButton
+                android:id="@+id/cerrarBtn7"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_baseline_login_24"
+                android:background="@drawable/edt_style"/>
+        </LinearLayout>
+        -->
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bn7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_weight="1"
+            app:menu="@menu/bottom_navigation_main" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

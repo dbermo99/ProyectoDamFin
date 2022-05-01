@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/David BM/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/David BM/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_registro.xml" value="0.2441123188405797" />
+        <entry key="..\:/Users/David BM/AndroidStudioProjects/ProyectoFinal/app/src/main/res/menu/bottom_navigation_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/David BM/AndroidStudioProjects/ProyectoFinal/app/src/main/res/menu/bottom_navigation_main_notification.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/button_round_border.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/button_rounded.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/button_rounded_border.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/custom_button.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/custom_button2.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/edt_style.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/edt_style2.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/ic_corazonblanco.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/ic_corazonblanco2.xml" value="0.26205128205128203" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/ic_corazonblancoprueba.xml" value="0.26205128205128203" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/ic_corazonrojo.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/ic_corazonrojo222.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/ic_corazonrojo666.xml" value="0.26205128205128203" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/ic_corazonrojoprueba.xml" value="0.26205128205128203" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/ic_corazonrojoprueba2.xml" value="0.26205128205128203" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/ic_icono_def.xml" value="0.26205128205128203" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/roundcorner.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/splash_screen.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_amistades.xml" value="0.23731884057971014" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_buscar.xml" value="0.264" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_comentario.xml" value="0.2259963768115942" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_editar_perfil.xml" value="0.25" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_editar_publicacion.xml" value="0.23777173913043478" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_mi_perfil.xml" value="0.25" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_notificacion.xml" value="0.264" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_perfil.xml" value="0.25" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_perfil_bloqueado.xml" value="0.24818840579710144" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_pruebas_bnv.xml" value="0.25" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_publicar.xml" value="0.264" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_recuperar_clave.xml" value="0.25" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_registro.xml" value="0.264" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_subir_imagen.xml" value="0.25" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_ver_comentarios.xml" value="0.264" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/button_round.xml" value="0.25" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/car_prueba.xml" value="0.25" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/card_buscar_layout.xml" value="0.264" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/card_comentario_layout.xml" value="0.21331521739130435" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/card_layout.xml" value="0.4" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/card_mi_publicacion.xml" value="0.4" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/card_notificacion_layout.xml" value="0.4" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/cardprueba.xml" value="0.264" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/lisa_layout.xml" value="0.24954710144927536" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/list_layout.xml" value="0.264" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/lista_layout.xml" value="0.24954710144927536" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/menu/bottom_menu.xml" value="0.25" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/menu/bottom_navigation_main.xml" value="0.25" />
+        <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/menu/opciones_publicacion.xml" value="0.25" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

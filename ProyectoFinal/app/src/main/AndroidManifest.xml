@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.proyectofinal">
+
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- PERMISOS PARA LA CONEXION A INTERNET -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ProyectoFinal"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".AmistadesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PerfilBloqueadoActivity"
+            android:exported="false" /> <!-- PERMISO PARA CONEXION HTTP (NO SEGURA) -->
+        <activity
+            android:name=".VerComentariosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ComentarioActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditarPublicacionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditarPerfilActivity"
+            android:exported="false" /> <!-- CON ESTO PERMITIMOS LA CONEXION A TRAVÉS DE HTTP (CONEXION NO SEGURA) -->
+        <activity
+            android:name=".RecuperarClaveActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NotificacionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MiPerfilActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BuscarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PerfilActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PublicarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegistroActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
