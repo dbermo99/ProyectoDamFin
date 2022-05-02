@@ -41,6 +41,8 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RegistroActivity extends AppCompatActivity {
 
@@ -102,19 +104,23 @@ public class RegistroActivity extends AppCompatActivity {
             String apellidos = apellidosText.getText().toString();
 
             if(imagenSeleccionada) {
-                if(email.trim().length()>0 && usuario2.trim().length()>0 && clave.trim().length()>0 && clave2.trim().length()>0
-                        && nombre.trim().length()>0 && apellidos.trim().length()>0) {
-                    if(clave.equals(clave2))
-                        comprobarUsuario(MainActivity.RED+"buscar_usuario.php");
-                    else
-                        Toast.makeText(getApplicationContext(), "LAS CONTRASEÑAS NO CINCIDEN", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getApplicationContext(), "RELLENE TODOS LOS CAMPOS", Toast.LENGTH_SHORT).show();
-                }
+                    if(email.trim().length()>0 && usuario2.trim().length()>0 && clave.trim().length()>0 && clave2.trim().length()>0
+                            && nombre.trim().length()>0 && apellidos.trim().length()>0) {
+                        if(validarEmail(email)) {
+                            if(clave.equals(clave2)) {
+                                comprobarUsuario(MainActivity.RED + "buscar_usuario.php");
+                            } else {
+                                Toast.makeText(getApplicationContext(), "LAS CONTRASEÑAS NO CINCIDEN", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(getApplicationContext(), "EMAIL NO VÁLIDO", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(getApplicationContext(), "RELLENE TODOS LOS CAMPOS", Toast.LENGTH_SHORT).show();
+                    }
             } else {
                 Toast.makeText(getApplicationContext(), "SELECCIONE ALGUNA IMAGEN", Toast.LENGTH_SHORT).show();
             }
-
         });
 
         iniciarSesionBtn.setOnClickListener(view -> {
@@ -123,6 +129,19 @@ public class RegistroActivity extends AppCompatActivity {
             finish();
         });
 
+    }
+
+    private boolean validarEmail(String email) {
+        boolean valido = false;
+        // Patrón para validar el email
+        Pattern pattern = Pattern
+                .compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+        Matcher mather = pattern.matcher(email);
+        if (mather.find() == true) {
+            valido = true;
+        }
+        return valido;
     }
 
     private void contarUsuarios(String URL) {
