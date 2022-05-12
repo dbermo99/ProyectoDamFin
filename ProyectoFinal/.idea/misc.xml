@@ -3,8 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/David BM/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_amistades.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/David BM/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_buscar.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/David BM/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_comentario.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/David BM/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_editar_perfil.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/David BM/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_editar_publicacion.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/David BM/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/David BM/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_mi_perfil.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/David BM/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_notificacion.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/David BM/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_perfil.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/David BM/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_perfil_bloqueado.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/David BM/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_publicar.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/David BM/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_recuperar_clave.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/David BM/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_registro.xml" value="0.2441123188405797" />
+        <entry key="..\:/Users/David BM/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_ver_comentarios.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/David BM/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/card_notificacion_layout.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/David BM/AndroidStudioProjects/ProyectoFinal/app/src/main/res/menu/bottom_navigation_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/David BM/AndroidStudioProjects/ProyectoFinal/app/src/main/res/menu/bottom_navigation_main_notification.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/David/AndroidStudioProjects/ProyectoFinal/app/src/main/res/drawable/button_round_border.xml" value="0.26614583333333336" />

@@ -120,7 +120,14 @@ public class AmistadesActivity extends AppCompatActivity implements SearchView.O
                         //SIRVE PARA IR AL PERFIL DE CADA USUARIO PINCHANDO EN EL ITEM DE RECYCLERVIEW
                         String idUsu = usuariosListAmistades.get(recyclerBuscarAmistades.getChildAdapterPosition(view)).getId()+"";
                         String usu = usuariosListAmistades.get(recyclerBuscarAmistades.getChildAdapterPosition(view)).getUsuario()+"";
-                        comprobarAmistad(MainActivity.RED+"buscar_amistad.php",usu,idUsu);
+
+                        Intent intent = new Intent(AmistadesActivity.this, PerfilActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("id",idUsu);
+                        bundle.putString("usuario",usu);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                        AmistadesActivity.this.finish();
                     });
 
                     recyclerBuscarAmistades.setAdapter(adapter);
@@ -133,87 +140,6 @@ public class AmistadesActivity extends AppCompatActivity implements SearchView.O
         });
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(jsonArrayRequest);
-    }
-
-    private void comprobarAmistad(String URL, String usuarioPub, String idUsuario) {
-        JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(URL, array -> {
-            boolean existe = false;
-            for(int i=0; i<array.length();i++) {
-                try {
-                    JSONObject object = array.getJSONObject(i);
-                    String idUsuario1 = object.getString("id_usuario1").trim();
-                    String idUsuario2 = object.getString("id_usuario2").trim();
-
-                    String miId = preferences.getString("id", "-1");
-
-                    if((idUsuario1.equalsIgnoreCase(miId) && idUsuario2.equalsIgnoreCase(idUsuario)) ||
-                            (idUsuario1.equalsIgnoreCase(idUsuario) && idUsuario2.equalsIgnoreCase(miId))) {
-                        existe = true;
-                    }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-            if(existe) {
-                Intent intent = new Intent(AmistadesActivity.this, PerfilActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("id",idUsuario);
-                bundle.putString("usuario",usuarioPub);
-                intent.putExtras(bundle);
-                startActivity(intent);
-                AmistadesActivity.this.finish();
-            } else {
-                comprobarPrivacidad(MainActivity.RED+"buscar_usuario.php",usuarioPub, idUsuario);
-            }
-        }, error -> {
-            //Toast.makeText(BuscarActivity.this, "NO EXISTEN USUARIOS", Toast.LENGTH_SHORT).show();
-        });
-
-        RequestQueue requestQueue = Volley.newRequestQueue(AmistadesActivity.this);
-        requestQueue.add(jsonArrayRequest);
-    }
-
-    private void comprobarPrivacidad(String URL, String usuarioPub, String idUsuario) {
-        JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(URL, array -> {
-            boolean privada = false;
-            for(int i=0; i<array.length();i++) {
-                try {
-                    JSONObject object = array.getJSONObject(i);
-                    String idUsuario1 = object.getString("id").trim();
-                    String privada1 = object.getString("privada").trim();
-
-                    if((idUsuario1.equalsIgnoreCase(idUsuario)) && (privada1.equalsIgnoreCase("1"))) {
-                        privada = true;
-                    }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-            if(privada) {
-                Intent intent = new Intent(AmistadesActivity.this, PerfilBloqueadoActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("id",idUsuario);
-                bundle.putString("usuario",usuarioPub);
-                intent.putExtras(bundle);
-                startActivity(intent);
-                AmistadesActivity.this.finish();
-            } else {
-                Intent intent = new Intent(AmistadesActivity.this, PerfilActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("id",idUsuario);
-                bundle.putString("usuario",usuarioPub);
-                intent.putExtras(bundle);
-                startActivity(intent);
-                AmistadesActivity.this.finish();
-            }
-        }, error -> {
-            //Toast.makeText(BuscarActivity.this, "NO EXISTEN USUARIOS", Toast.LENGTH_SHORT).show();
-        });
-
-        RequestQueue requestQueue = Volley.newRequestQueue(AmistadesActivity.this);
         requestQueue.add(jsonArrayRequest);
     }
 

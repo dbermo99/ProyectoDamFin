@@ -34,6 +34,7 @@ import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.MessageDigest;
@@ -207,13 +208,19 @@ public class RegistroActivity extends AppCompatActivity {
     }
 
     private String cifrarClave() {
-        String clave = claveText.getText().toString();
-        char array[] = clave.toCharArray(); //convertimos la clave a un array de char
-        for(int i = 0; i<array.length; i++) {
-            array[i] = (char)(array[i] + (char)5); //a cada letra la convertimos en la letra que está en 5 puestos a la derecha
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] messageDigest = md.digest(password.getBytes());
+            BigInteger number = new BigInteger(1, messageDigest);
+            String hashtext = number.toString(16);
+
+            while (hashtext.length() < 32) {
+                hashtext = "0" + hashtext;
+            }
+            return hashtext;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
-        String encriptado = String.valueOf(array); //convertimos el array en string
-        return encriptado;
     }
 
     private void registrar(String URL) {

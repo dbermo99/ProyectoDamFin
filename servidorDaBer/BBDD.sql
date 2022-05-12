@@ -7,7 +7,7 @@ CREATE TABLE Usuario
     id INTEGER NOT NULL,
     email VARCHAR(40) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
     usuario VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-    contrasenna VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+    contrasenna VARCHAR(40) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
     nombre VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
     apellidos VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
     privada BOOLEAN NOT NULL,
@@ -92,29 +92,6 @@ ALTER TABLE `Comentario`
 ALTER TABLE `Comentario`
     MODIFY `id` INTEGER NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
-INSERT INTO `usuario` (`id`, `email`, `usuario`, `contrasenna`, `nombre`, `apellidos`, `privada`, `foto`) VALUES
-(1, 'david@gmail.com', 'davidbm99', 'david1234', 'David', 'Bermejo Moreno', 1, 'fotoPerfil.jpg'),
-(2, 'pepe@gmail.com', 'pepe2000', 'pepe1234', 'Pepe', 'G G', 1, 'usuario2.png'),
-(3, 'jesus@gmail.com', 'jesus1314', 'jesus1234', 'Jesús', 'García G', 0, 'usuario3.png'),
-(4, 'lucia@gmail.com', 'lucia_gg', 'lucua1234', 'Lucía', 'g g', 0, 'usuario4.png'),
-(5, 'amanda@gmail.com', 'amandadg', 'amanda', 'Amandaaa', 'D G', 1, 'usuario5.png');
+INSERT INTO `usuario` (`id`, `email`, `usuario`, `contrasenna`, `nombre`, `apellidos`, `foto`) VALUES
+(1, 'david@gmail.com', 'davidbm99', 'david1234', 'david', 'Bermejo Moreno', 'fotoPerfil.jpg');
 
-INSERT INTO `amistad` (`id`, `id_usuario1`, `id_usuario2`) VALUES
-(2, 5, 1),
-(3, 1, 4),
-(4, 1, 2);
-
-INSERT INTO `publicacion` (`id`, `id_usuario`, `texto`, `foto`) VALUES
-(1, 1, 'primeraa', 'publicacion1.png'),
-(3, 2, 'ertgegr', 'publicacion3.png'),
-(4, 3, 'ryhtujetr erg', 'publicacion4.png'),
-(6, 1, 'Ñam ñam', 'publicacion6.png'),
-(7, 1, 'pc', 'publicacion7.png');
-
-INSERT INTO `solicitud` (`id`, `id_usuario1`, `id_usuario2`) VALUES
-(3, 4, 1),
-(5, 1, 3);
-
-INSERT INTO `megusta` (`id`, `id_publicacion`, `id_usuario`) VALUES
-(5, 3, 1),
-(6, 7, 1);

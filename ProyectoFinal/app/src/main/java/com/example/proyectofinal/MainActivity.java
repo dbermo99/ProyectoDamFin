@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Publicacion> publicacionList;
     SharedPreferences preferencias;
 
-    public static final String RED = "http://192.168.0.14/PruebasProyecto/";
-    //public static final String RED = "http://10.102.29.160/PruebasProyecto/";
+    public static final String RED = "http://192.168.0.17/servidorDaBer/";
+    //public static final String RED = "http://10.102.29.160/servidorDaBer/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

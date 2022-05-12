@@ -1,12 +1,18 @@
 <?php
     include 'conexion.php';
 
+    // if(isset($_REQUEST['usuario'])) {
+    //     $usuario = $_REQUEST['usuario'];
+    //     $posibleWhere = "WHERE usuario = '$usuario'";
+    // } else if(isset($_REQUEST['idUsuario'])) {
+    //     $idUsuario = $_REQUEST['idUsuario'];
+    //     $posibleWhere = "WHERE id_usuario2 = $idUsuario";
+    // } else
+    //     $posibleWhere = "";
+
     if(isset($_REQUEST['usuario'])) {
         $usuario = $_REQUEST['usuario'];
         $posibleWhere = "WHERE usuario = '$usuario'";
-    } else if(isset($_REQUEST['idUsuario'])) {
-        $idUsuario = $_REQUEST['idUsuario'];
-        $posibleWhere = "WHERE id_usuario2 = $idUsuario";
     } else
         $posibleWhere = "";
     
