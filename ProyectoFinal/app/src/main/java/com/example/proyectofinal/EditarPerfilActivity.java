@@ -23,6 +23,8 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,7 +33,9 @@ public class EditarPerfilActivity extends AppCompatActivity {
     EditText emailText2, usuarioText2, claveText2, clave2Text2, nombreText2, apellidosText2;
     CheckBox privadaActualizarCbx;
     Button guardarCambiosBtn, volverBtn;
+
     SharedPreferences preferences;
+    SharedPreferences.Editor editor;
 
     String emailTxt, usuarioTxt, claveTxt, clave2Txt, nombreTxt, apellidosTxt;
 
@@ -42,6 +46,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         preferences = getSharedPreferences("preferenciasLogin", Context.MODE_PRIVATE);
+        editor = preferences.edit();
 
         emailText2 = (EditText) findViewById(R.id.emailText2);
         usuarioText2 = (EditText) findViewById(R.id.usuarioText2);
@@ -70,10 +75,12 @@ public class EditarPerfilActivity extends AppCompatActivity {
             myBuilder.setTitle("EDITAR PERFIL");
             myBuilder.setPositiveButton("SI", (dialogInterface, i) -> {
 
-                if(claveTxt.equals(clave2Txt))
+                if(claveTxt.equals(clave2Txt)) {
                     actualizar(MainActivity.RED+"editar_usuario.php");
-                else
+                } else {
                     Toast.makeText(getApplicationContext(), "LAS CLAVES NO COINCIDEN", Toast.LENGTH_SHORT).show();
+                }
+
             });
             myBuilder.setNegativeButton("NO", (dialog, i) -> dialog.cancel());
 
@@ -89,9 +96,27 @@ public class EditarPerfilActivity extends AppCompatActivity {
         });
     }
 
+    private String cifrarClave() {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] messageDigest = md.digest(claveTxt.getBytes());
+            BigInteger number = new BigInteger(1, messageDigest);
+            String hashtext = number.toString(16);
+
+            while (hashtext.length() < 32) {
+                hashtext = "0" + hashtext;
+            }
+            return hashtext;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     private void actualizar(String URL) {
         StringRequest stringRequest=new StringRequest(Request.Method.POST, URL, response -> {
             Toast.makeText(getApplicationContext(), "CORRECTO", Toast.LENGTH_SHORT).show();
+            editor.putString("usuario",usuarioTxt);
+            editor.commit();
             Intent intent=new Intent(getApplicationContext(), MiPerfilActivity.class);
             startActivity(intent);
             finish();
@@ -105,7 +130,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
                 Map<String,String> parametros=new HashMap<String,String>();
                 parametros.put("id",preferences.getString("id", "-1"));
                 parametros.put("usuario",usuarioTxt);
-                parametros.put("password",claveTxt);
+                parametros.put("password",cifrarClave());
                 parametros.put("nombre",nombreTxt);
                 parametros.put("apellidos",apellidosTxt);
                 parametros.put("privada",privada);
