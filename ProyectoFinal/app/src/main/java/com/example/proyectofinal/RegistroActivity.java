@@ -1,6 +1,7 @@
 package com.example.proyectofinal;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -9,6 +10,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
@@ -39,15 +41,20 @@ import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.time.LocalDate;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.temporal.ChronoUnit;
 
 public class RegistroActivity extends AppCompatActivity {
 
-    EditText emailText, usuarioText, claveText, clave2Text, nombreText, apellidosText;
+    EditText emailText, usuarioText, claveText, clave2Text, nombreText, apellidosText, diaText, mesText, annoText;
     CheckBox privadaCbx;
     Button registrarseBtn, iniciarSesionBtn, btnBuscarRegistro;
     String usuario, password;
@@ -65,6 +72,7 @@ public class RegistroActivity extends AppCompatActivity {
 
     boolean imagenSeleccionada; //PARA SABER SI HAY UNA IMAGEN DE PERFIL SELECCIONADA, SI NO LA HAY NO SE PERMITE REGISTRARSE
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +85,9 @@ public class RegistroActivity extends AppCompatActivity {
         clave2Text = (EditText) findViewById(R.id.clave2Text);
         nombreText = (EditText) findViewById(R.id.nombreText);
         apellidosText = (EditText) findViewById(R.id.apellidosText);
+        diaText = (EditText) findViewById(R.id.diaText);
+        mesText = (EditText) findViewById(R.id.mesText);
+        annoText = (EditText) findViewById(R.id.annoText);
         privadaCbx = (CheckBox) findViewById(R.id.privadaCbx);
         registrarseBtn = (Button) findViewById(R.id.registrarseBtn);
         iniciarSesionBtn = (Button) findViewById(R.id.iniciarSesionBtn);
@@ -103,19 +114,26 @@ public class RegistroActivity extends AppCompatActivity {
             String clave2 = clave2Text.getText().toString();
             String nombre = nombreText.getText().toString();
             String apellidos = apellidosText.getText().toString();
+            String dia = diaText.getText().toString();
+            String mes = mesText.getText().toString();
+            String anno = annoText.getText().toString();
 
             if(imagenSeleccionada) {
                     if(email.trim().length()>0 && usuario2.trim().length()>0 && clave.trim().length()>0 && clave2.trim().length()>0
-                            && nombre.trim().length()>0 && apellidos.trim().length()>0) {
-                        if(validarEmail(email)) {
-                            if(clave.equals(clave2)) {
-                                comprobarUsuario(MainActivity.RED + "buscar_usuario.php");
+                            && nombre.trim().length()>0 && apellidos.trim().length()>0 && dia.trim().length()>0
+                            && mes.trim().length()>0 && anno.trim().length()>0) {
+                        if(validarEdad()) {
+                            if(validarEmail(email)) {
+                                if(clave.equals(clave2)) {
+                                    comprobarUsuario(MainActivity.RED + "buscar_usuario.php");
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "LAS CONTRASEÑAS NO CINCIDEN", Toast.LENGTH_SHORT).show();
+                                }
                             } else {
-                                Toast.makeText(getApplicationContext(), "LAS CONTRASEÑAS NO CINCIDEN", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "EMAIL NO VÁLIDO", Toast.LENGTH_SHORT).show();
                             }
-                        } else {
-                            Toast.makeText(getApplicationContext(), "EMAIL NO VÁLIDO", Toast.LENGTH_SHORT).show();
                         }
+
                     } else {
                         Toast.makeText(getApplicationContext(), "RELLENE TODOS LOS CAMPOS", Toast.LENGTH_SHORT).show();
                     }
@@ -130,6 +148,52 @@ public class RegistroActivity extends AppCompatActivity {
             finish();
         });
 
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private boolean validarFecha() {
+        boolean correcto = true;
+        int dia = Integer.parseInt(diaText.getText().toString());
+        int mes = 0;
+        if(mesText.getText().toString().length()==1) {
+            mes = Integer.parseInt("0"+mesText.getText().toString());
+        } else {
+            mes = Integer.parseInt(mesText.getText().toString());
+        }
+        int anno = Integer.parseInt(annoText.getText().toString());
+        try {
+            LocalDate today = LocalDate.of(anno, mes, dia); //comprpamos si es una fecha correcta
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "iNTRODUCE UNA FECHA VÁLIDA", Toast.LENGTH_SHORT).show();
+            correcto = false;
+        }
+        return correcto;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private boolean validarEdad() {
+        //validamos si es mayor de edad
+        boolean correcto = false;
+        if(this.validarFecha()) {
+            int dia = Integer.parseInt(diaText.getText().toString());
+            int mes = 0;
+            if(mesText.getText().toString().length()==1) {
+                mes = Integer.parseInt("0"+mesText.getText().toString());
+            } else {
+                mes = Integer.parseInt(mesText.getText().toString());
+            }
+            int anno = Integer.parseInt(annoText.getText().toString());
+
+            LocalDate fHoy= LocalDate.now();
+            LocalDate cumple= LocalDate.of(anno, mes, dia);
+            long edad= ChronoUnit.YEARS.between(cumple, fHoy);
+            if(edad >= 18) {
+                correcto = true;
+            } else {
+                Toast.makeText(getApplicationContext(), "PARA PODER REGISTRATE DEBES SER MAYOR DE EDAD", Toast.LENGTH_SHORT).show();
+            }
+        }
+        return correcto;
     }
 
     private boolean validarEmail(String email) {
@@ -187,7 +251,8 @@ public class RegistroActivity extends AppCompatActivity {
                     nombreU = jsonObject.getString("usuario");
                     emailU = jsonObject.getString("email");
                     //SI EXISTE LO INDICAMOS
-                    if(nombreU.equalsIgnoreCase(usuarioText.getText().toString()) || emailU.equalsIgnoreCase(emailText.getText().toString())) {
+                    if(nombreU.equalsIgnoreCase(usuarioText.getText().toString()) ||
+                            emailU.equalsIgnoreCase(emailText.getText().toString())) {
                         Toast.makeText(getApplicationContext(), "EMAIL O USUARIO YA REGISTRADO", Toast.LENGTH_SHORT).show();
                         existe = true;
                     }

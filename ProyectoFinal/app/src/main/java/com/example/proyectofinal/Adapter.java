@@ -283,7 +283,7 @@ public class Adapter extends  RecyclerView.Adapter<Adapter.PublicacionHolder> {
                 if(existe) {
                     //SI HAY MG SE COLOCA EL ICONO DE MG PULSADO
                     mgButton.setImageResource(R.drawable.ic_corazonrojo); //cambiar
-                    //AL BOTON SE LE ASIGNA EL METODO DE ELIMINAR AMISTAD
+                    //AL BOTON SE LE ASIGNA EL METODO DE ELIMINAR MG
                     mgButton.setOnClickListener(view -> {
                         borrarMg(MainActivity.RED+"borrar_mg.php", idPub);
                     });

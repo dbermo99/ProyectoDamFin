@@ -36,7 +36,8 @@
             android:drawableLeft="@drawable/ic_baseline_email_24"
             android:ems="10"
             android:hint="Email"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:minHeight="48dp" />
 
         <EditText
             android:id="@+id/usuarioText"
@@ -47,7 +48,8 @@
             android:drawableLeft="@drawable/ic_baseline_person_24"
             android:ems="10"
             android:hint="Usuario"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:minHeight="48dp" />
 
         <EditText
             android:id="@+id/claveText"
@@ -58,7 +60,8 @@
             android:drawableLeft="@drawable/ic_baseline_lock_24"
             android:ems="10"
             android:hint="Contraseña"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:minHeight="48dp" />
 
         <EditText
             android:id="@+id/clave2Text"
@@ -69,7 +72,8 @@
             android:drawableLeft="@drawable/ic_baseline_lock_24"
             android:ems="10"
             android:hint="Confirmar contraseña"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:minHeight="48dp" />
 
         <EditText
             android:id="@+id/nombreText"
@@ -79,7 +83,8 @@
             android:layout_marginEnd="32dp"
             android:ems="10"
             android:hint="Nombre"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:minHeight="48dp" />
 
         <EditText
             android:id="@+id/apellidosText"
@@ -89,47 +94,102 @@
             android:layout_marginEnd="32dp"
             android:ems="10"
             android:hint="Apellidos"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:minHeight="48dp" />
 
-        <CheckBox
-            android:id="@+id/privadaCbx"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="CUENTA PRIVADA" />
-
-        <Button
-            android:id="@+id/btnBuscarRegistro"
+        <TextView
+            android:id="@+id/textView5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="32dp"
-            android:background="@drawable/button_rounded_border"
-            android:text="Elegir Imagen"
-            app:backgroundTint="@null" />
+            android:text="FECHA DE NACIMIENTO"
+            android:gravity="center"
+            android:textSize="20sp"/>
 
-        <Button
-            android:id="@+id/registrarseBtn"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="32dp"
-            android:background="@drawable/button_rounded_border"
-            android:text="REGISTRARSE"
-            app:backgroundTint="@null" />
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/iniciarSesionBtn"
+            <EditText
+                android:id="@+id/diaText"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="DÍA"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/mesText"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="MES"
+                android:inputType="number"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <EditText
+                android:id="@+id/annoText"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="AÑO"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/button_rounded"
-            android:text="INICIAR SESION"
-            app:backgroundTint="@null" />
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/privadaCbx"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CUENTA PRIVADA" />
+
+            <Button
+                android:id="@+id/btnBuscarRegistro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/button_rounded_border"
+                android:text="Elegir Imagen"
+                app:backgroundTint="@null" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/registrarseBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/button_rounded_border"
+                android:text="REGISTRARSE"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/iniciarSesionBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/button_rounded"
+                android:text="INICIAR SESION"
+                app:backgroundTint="@null" />
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/imagenRegistro"

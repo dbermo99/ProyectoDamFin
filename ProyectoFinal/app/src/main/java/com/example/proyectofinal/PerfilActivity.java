@@ -126,8 +126,10 @@ public class PerfilActivity extends AppCompatActivity {
                     String idUsuario1 = object.getString("id_usuario1").trim();
                     String idUsuario2 = object.getString("id_usuario2").trim();
 
-                    if(((idUsuario1.equalsIgnoreCase(idUsuario)) && (idUsuario2.equalsIgnoreCase(preferences.getString("id", "-1")))) ||
-                            ((idUsuario2.equalsIgnoreCase(idUsuario)) && (idUsuario1.equalsIgnoreCase(preferences.getString("id", "-1"))))) {
+                    if(((idUsuario1.equalsIgnoreCase(idUsuario)) &&
+                            (idUsuario2.equalsIgnoreCase(preferences.getString("id", "-1")))) ||
+                            ((idUsuario2.equalsIgnoreCase(idUsuario)) &&
+                                    (idUsuario1.equalsIgnoreCase(preferences.getString("id", "-1"))))) {
                         amigo = true;
                     }
 
@@ -152,7 +154,6 @@ public class PerfilActivity extends AppCompatActivity {
     }
 
     private void comprobarSolicitud(String URL) {
-
         JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(URL, array -> {
             boolean solicitud = false;
             for(int i=0; i<array.length();i++) {
@@ -161,11 +162,12 @@ public class PerfilActivity extends AppCompatActivity {
                     String idUsuario1 = object.getString("id_usuario1").trim();
                     String idUsuario2 = object.getString("id_usuario2").trim();
 
-                    if(((idUsuario1.equalsIgnoreCase(idUsuario)) && (idUsuario2.equalsIgnoreCase(preferences.getString("id", "-1")))) ||
-                            ((idUsuario2.equalsIgnoreCase(idUsuario)) && (idUsuario1.equalsIgnoreCase(preferences.getString("id", "-1"))))) {
+                    if(((idUsuario1.equalsIgnoreCase(idUsuario)) &&
+                            (idUsuario2.equalsIgnoreCase(preferences.getString("id", "-1")))) ||
+                            ((idUsuario2.equalsIgnoreCase(idUsuario)) &&
+                                    (idUsuario1.equalsIgnoreCase(preferences.getString("id", "-1"))))) {
                         solicitud = true;
                     }
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -183,10 +185,8 @@ public class PerfilActivity extends AppCompatActivity {
         }, error -> {
             //Toast.makeText(context, "NO HAY SOLICITUDES", Toast.LENGTH_SHORT).show();
         });
-
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(jsonArrayRequest);
-
     }
 
     //CARGA LA CANTIDAD DE AMISTADES

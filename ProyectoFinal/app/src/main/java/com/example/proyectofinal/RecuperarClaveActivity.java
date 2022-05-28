@@ -80,7 +80,8 @@ public class RecuperarClaveActivity extends AppCompatActivity {
 
                     nombreU = jsonObject.getString("usuario");
                     emailU = jsonObject.getString("email");
-                    if(nombreU.equalsIgnoreCase(usuarioRecuperar.getText().toString()) && emailU.equalsIgnoreCase(correoUsu.getText().toString())) {
+                    if(nombreU.equalsIgnoreCase(usuarioRecuperar.getText().toString()) &&
+                            emailU.equalsIgnoreCase(correoUsu.getText().toString())) {
                         existe = true;
                     }
 

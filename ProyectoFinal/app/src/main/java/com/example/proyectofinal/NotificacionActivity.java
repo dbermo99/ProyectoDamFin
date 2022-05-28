@@ -96,7 +96,8 @@ public class NotificacionActivity extends AppCompatActivity {
                     String fotoUsuarioEmisor = object.getString("foto").trim();
                     String id_usuario2 = object.getString("id_usuario2").trim();
 
-                    notificacionesList.add(new Notificacion(Integer.parseInt(id),Integer.parseInt(id_usuario1),usuarioEmisor,fotoUsuarioEmisor,Integer.parseInt(id_usuario2)));
+                    notificacionesList.add(new Notificacion(Integer.parseInt(id),Integer.parseInt(id_usuario1),usuarioEmisor,
+                            fotoUsuarioEmisor,Integer.parseInt(id_usuario2)));
                     adapter = new AdapterNotificacion(notificacionesList, NotificacionActivity.this);
                     recyclerViewNotificaciones.setAdapter(adapter);
 

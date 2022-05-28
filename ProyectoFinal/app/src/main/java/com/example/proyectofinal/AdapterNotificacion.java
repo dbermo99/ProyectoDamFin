@@ -127,7 +127,7 @@ public class AdapterNotificacion extends  RecyclerView.Adapter<AdapterNotificaci
     public void eliminarSolicitud(int id1, int id2) {
         String URL = MainActivity.RED+"crearSolicitud.php?eliminar";
         StringRequest stringRequest=new StringRequest(Request.Method.POST, URL, response -> {
-            //Toast.makeText(context, "Eliminada correctamente", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "Solicitud eliminada", Toast.LENGTH_SHORT).show();
         }, error -> Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show()) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
@@ -140,6 +140,7 @@ public class AdapterNotificacion extends  RecyclerView.Adapter<AdapterNotificaci
 
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(stringRequest);
+
     }
 }
 
