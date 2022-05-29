@@ -320,6 +320,9 @@ public class RegistroActivity extends AppCompatActivity {
                 parametros.put("privada",privada);
                 parametros.put("foto", imagen);
                 parametros.put("nombreFoto", nombreFichero);
+                parametros.put("dia", diaText.getText().toString());
+                parametros.put("mes", mesText.getText().toString());
+                parametros.put("anno", annoText.getText().toString());
                 return parametros;
             }
         };

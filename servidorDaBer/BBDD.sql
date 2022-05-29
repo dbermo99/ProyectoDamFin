@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS ProyectoFinal;
+-- DROP DATABASE IF EXISTS ProyectoFinal;
 CREATE DATABASE ProyectoFinal;
 USE ProyectoFinal;
 
@@ -11,7 +11,8 @@ CREATE TABLE Usuario
     nombre VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
     apellidos VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
     privada BOOLEAN NOT NULL,
-    foto VARCHAR(30) NOT NULL
+    foto VARCHAR(30) NOT NULL,
+    fechaNac DATE NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE Publicacion
@@ -92,6 +93,6 @@ ALTER TABLE `Comentario`
 ALTER TABLE `Comentario`
     MODIFY `id` INTEGER NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
-INSERT INTO `usuario` (`id`, `email`, `usuario`, `contrasenna`, `nombre`, `apellidos`, `foto`) VALUES
-(1, 'david@gmail.com', 'davidbm99', 'david1234', 'david', 'Bermejo Moreno', 'fotoPerfil.jpg');
+INSERT INTO `usuario` (`id`, `email`, `usuario`, `contrasenna`, `nombre`, `apellidos`, `foto`, `fechaNac`) VALUES
+(1, 'david@gmail.com', 'davidbm99', 'david1234', 'david', 'Bermejo Moreno', 'fotoPerfil.jpg', '1999-09-29');
 
