@@ -2,6 +2,7 @@ package com.example.proyectofinal;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -65,7 +66,8 @@ public class RegistroActivity extends AppCompatActivity {
     String nombreFichero; //NOMBRE CON EL QUE SE SUBIRÁ LA IMAGEN
 
     Bitmap bitmap; //MAPA DE BITS DE UNA IMAGEN (PARA REPRESENTAR IMAGENES)
-    int PICK_IMAGE_REQUEST = 1; //PARA SABER QUE LA IMAGEN HA SIDO SELECCIONADA DESDE LA GALERÍA
+    int IMAGEN_GALERIA = 1; //PARA SABER QUE LA IMAGEN HA SIDO SELECCIONADA DESDE LA GALERÍA
+    int IMAGEN_CAMARA = 101;
 
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
@@ -102,7 +104,7 @@ public class RegistroActivity extends AppCompatActivity {
         preferences = getSharedPreferences("preferenciasLogin", Context.MODE_PRIVATE);
         editor = preferences.edit();
 
-        btnBuscarRegistro.setOnClickListener(v -> showFileChooser());
+        btnBuscarRegistro.setOnClickListener(v -> mostrarOpciones());
 
         registrarseBtn.setOnClickListener(view -> {
             usuario = usuarioText.getText().toString();
@@ -328,6 +330,25 @@ public class RegistroActivity extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
+    private void mostrarOpciones() {
+        AlertDialog.Builder myBuilder = new AlertDialog.Builder(this);
+        myBuilder.setMessage("ELIJA UNA OPCIÓN");
+        myBuilder.setTitle("SELECCIONAR IMAGEN");
+        myBuilder.setPositiveButton("DESDE GALERÍA", (dialogInterface, i) -> showFileChooser());
+        myBuilder.setNegativeButton("DESDE CÁMARA", (dialog, i) -> abrirCamara());
+        //myBuilder.setNeutralButton("OTRA OPCIÓN", (dialog, i) -> abrirCamara());//--SI HUBIERA MÁS OPCIONES SE PONE setNeutralButton
+
+        AlertDialog dialog = myBuilder.create();
+        dialog.show();
+    }
+
+    private void abrirCamara() {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(intent,IMAGEN_CAMARA);
+        //LA LINEA ANTERIOR LLAMA AL onActivityResult
+        //IMAGEN_CAMARA ES EL CODIGO QUE ENVIAMOS PARA SABER QUE LA ACCIÓN QUE QUEREMOS HACER ES ABRIR LA CÁMARA
+    }
+
     public String getStringImagen(Bitmap bmp) {
         //CONVIERTE LA IMAGEN EN UN STRING PARA QUE PUEDA SER ENVIADA AL SERVIDOR
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -342,8 +363,8 @@ public class RegistroActivity extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setType("image/*"); //MUESTRA LAS IMÁGENES DE LA GALERÍA
         intent.setAction(Intent.ACTION_GET_CONTENT); //PERMITE SELECCIONAR LA IMAGEN
-        startActivityForResult(Intent.createChooser(intent, "Seleciona imagen"), PICK_IMAGE_REQUEST);
-        //EL MÉTODO ANTERIOR LLAMA AL onActivityResult
+        startActivityForResult(Intent.createChooser(intent, "Seleciona imagen"), IMAGEN_GALERIA);
+        //LA LINEA ANTERIOR LLAMA AL onActivityResult
         imagenSeleccionada = true;
     }
 
@@ -352,17 +373,26 @@ public class RegistroActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         //COMPROBAMOS SI LA IMAGEN LA HEMOS OBTENIDO DESDE LA GALERIA, HA SIDO CORRECTO Y LOS DATOS NO SON NULOS
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+        if (requestCode == IMAGEN_GALERIA && resultCode == RESULT_OK && data != null && data.getData() != null) {
             Uri filePath = data.getData();
             try {
                 //OBTENEMOS EL BITMAP DE LA IMAGEN SELECCIONADA
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-                //ENVIAMOS LA IMAGEN AL IMAGEVIEW
-                iv.setImageBitmap(bitmap);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+
+        //COMPROBAMOS SI LA IMAGEN LA HEMOS OBTENIDO DESDE LA CÁMARA Y HA SIDO CORRECTO
+        if(requestCode == IMAGEN_CAMARA && resultCode == RESULT_OK) {
+            //CREAMOS UN BITMAP CON LA IMAGEN TOMADA DE LA CÁMARA
+            bitmap = (Bitmap) data.getExtras().get("data");
+        }
+
+        //ENVIAMOS LA IMAGEN AL IMAGEVIEW
+        iv.setImageBitmap(bitmap);
+        //INDICAMOS QUE HEMOS SELECCIONADO UNA IMAGEN PARA PODER CREAR LA PUBLICACIÓN
+        imagenSeleccionada = true;
     }
 
     private void obtenerId(String URL) {

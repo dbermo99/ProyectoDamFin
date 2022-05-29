@@ -132,6 +132,7 @@ public class PublicarActivity extends AppCompatActivity {
     private void abrirCamara() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent,IMAGEN_CAMARA);
+        //LA LINEA ANTERIOR LLAMA AL onActivityResult
         //IMAGEN_CAMARA ES EL CODIGO QUE ENVIAMOS PARA SABER QUE LA ACCIÓN QUE QUEREMOS HACER ES ABRIR LA CÁMARA
     }
 
@@ -197,9 +198,38 @@ public class PublicarActivity extends AppCompatActivity {
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Seleciona imagen"), IMAGEN_GALERIA);
+        //LA LINEA ANTERIOR LLAMA AL onActivityResult
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        //COMPROBAMOS SI LA IMAGEN LA HEMOS OBTENIDO DESDE LA GALERIA, HA SIDO CORRECTO Y LOS DATOS NO SON NULOS
+        if (requestCode == IMAGEN_GALERIA && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            Uri filePath = data.getData();
+            try {
+                //CREAMOS UN BITMAP CON LA IMAGEN SELECCIONADA DE LA GALERÍA
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        //COMPROBAMOS SI LA IMAGEN LA HEMOS OBTENIDO DESDE LA CÁMARA Y HA SIDO CORRECTO
+        if(requestCode == IMAGEN_CAMARA && resultCode == RESULT_OK) {
+            //CREAMOS UN BITMAP CON LA IMAGEN TOMADA DE LA CÁMARA
+            bitmap = (Bitmap) data.getExtras().get("data");
+        }
+
+        //ENVIAMOS LA IMAGEN AL IMAGEVIEW
+        iv.setImageBitmap(bitmap);
+        //INDICAMOS QUE HEMOS SELECCIONADO UNA IMAGEN PARA PODER CREAR LA PUBLICACIÓN
+        imagenSeleccionada = true;
+
+    }
+
+    /*
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -228,6 +258,6 @@ public class PublicarActivity extends AppCompatActivity {
             imagenSeleccionada = true;
         }
 
-    }
+    }*/
 
 }
