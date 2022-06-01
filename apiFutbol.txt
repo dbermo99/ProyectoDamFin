@@ -1,3 +1,6 @@
+https://allsportsapi.com/logo/?hash=logo
 
+https://allsportsapi.com/api/football/?&met=Teams&teamId=2626&APIkey=84c0d15a0422a021d7bf031f26538d1a6f20727a55f74b768a63a32932bb105c
 
-https://apiv2.allsportsapi.com/football/?met=Fixtures&APIkey=84c0d15a0422a021d7bf031f26538d1a6f20727a55f74b768a63a32932bb105c&from=2022-05-28&to=2022-05-28
+https://apiv2.allsportsapi.com/football/?met=Fixtures&APIkey=84c0d15a0422a021d7bf031f26538d1a6f20727a55f74b768a63a32932bb105c
+&from=2022-06-01&to=2022-06-01
