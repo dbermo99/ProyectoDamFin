@@ -1,0 +1,4 @@
+
+https://apiclient.besoccerapps.com/scripts/api/api.php?key=b2b9aec4c8aa1890a073e0caba1bc581&tz=Europe/Madrid&format=json&req=categories&filter=all
+
+https://apiclient.besoccerapps.com/scripts/api/api.php?key=b2b9aec4c8aa1890a073e0caba1bc581&tz=Europe/Madrid&format=json&req=categories&filter=all
